@@ -30,6 +30,13 @@ h1 {
 }
 
 /* nav styles */
+nav {
+    display: flex; /* Make nav a flex container */
+    justify-content: space-between; /* Distribute space between its direct children */
+    align-items: center; /* (Optional but recommended) Vertically align items in the center */
+    padding: 1rem; /* Example padding to give some breathing room */
+}
+
 .hamburger {
   padding-right: 20px;
   cursor: pointer;
