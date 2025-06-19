@@ -1,98 +1,408 @@
+/* Base Neobrutalism Colors */
+:root {
+  --nb-bg-light: #F7E7C4; /* Light beige/yellow background */
+  --nb-bg-dark: #2C2F33; /* Dark gray for dark mode */
+  --nb-text-dark: #1A1A1A; /* Dark text */
+  --nb-text-light: #F0F0F0; /* Light text */
+  --nb-accent-primary: #FF0066; /* Bright pink/magenta */
+  --nb-accent-secondary: #00BFFF; /* Bright blue */
+  --nb-border-dark: #000; /* Strong black border */
+  --nb-border-light: #FFF; /* Strong white border */
+  --nb-shadow-offset: 8px; /* For chunky shadows */
+}
+
+/* Light Mode Defaults */
 html {
-  background-color: #f1f5f9;
-  font-family: sans-serif;
+  background-color: var(--nb-bg-light);
+  color: var(--nb-text-dark);
+  font-family: 'Inter Variable', 'sans-serif'; /* Prefer a variable font if available, else generic sans-serif */
+  line-height: 1.6; /* Slightly increased for readability */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Dark Mode Overrides */
 html.dark {
-  background-color: #0d0950;
-  color: #fff;
+  background-color: var(--nb-bg-dark);
+  color: var(--nb-text-light);
 }
 
-.dark .nav-links a {
-  color: #fff;
-}
-
-body {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 80ch;
-  padding: 1rem;
-  line-height: 1.5;
-}
-
+/* Global Box Sizing */
 * {
   box-sizing: border-box;
 }
 
-h1 {
-  margin: 1rem 0;
-  font-size: 2.5rem;
+/* Body Container */
+body {
+  margin: 2rem auto; /* More margin top/bottom for a floating feel */
+  width: 100%;
+  max-width: 90ch; /* Slightly wider content area */
+  padding: 1.5rem; /* Increased padding */
+  border: 4px solid var(--nb-border-dark); /* Strong border */
+  box-shadow: var(--nb-shadow-offset) var(--nb-shadow-offset) 0px var(--nb-border-dark); /* Hard shadow */
+  background-color: var(--nb-bg-light); /* Ensure body has its own background */
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for dark mode */
 }
 
-/* nav styles */
+/* Dark Mode Body */
+html.dark body {
+  border-color: var(--nb-border-light);
+  box-shadow: var(--nb-shadow-offset) var(--nb-shadow-offset) 0px var(--nb-border-light);
+  background-color: var(--nb-bg-dark);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  margin: 1.5rem 0 0.75rem; /* More vertical rhythm */
+  font-family: 'IBM Plex Sans', sans-serif; /* A more industrial/modern sans-serif if you like */
+  font-weight: 900; /* Very bold */
+  text-transform: uppercase; /* Common in neobrutalism */
+  color: var(--nb-text-dark); /* Default dark heading color */
+}
+
+html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6 {
+    color: var(--nb-text-light); /* Light heading color in dark mode */
+}
+
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem); /* Responsive font size */
+  line-height: 1.1;
+  padding-bottom: 0.5rem;
+  border-bottom: 4px solid var(--nb-accent-primary); /* Underline with an accent color */
+}
+
+/* Links */
+a {
+    color: var(--nb-accent-primary);
+    text-decoration: underline; /* Always underlined */
+    text-decoration-color: var(--nb-accent-secondary); /* Accent color underline */
+    text-underline-offset: 4px; /* Lift the underline */
+    font-weight: bold;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+a:hover,
+a:focus {
+    color: var(--nb-accent-secondary); /* Swap colors on hover */
+    text-decoration-color: var(--nb-accent-primary);
+    outline: 2px dashed var(--nb-accent-primary); /* Dotted outline for focus */
+    outline-offset: 3px;
+}
+
+/* Nav styles (updated for neobrutalism) */
 nav {
-    display: flex; /* Make nav a flex container */
-    justify-content: space-between; /* Distribute space between its direct children */
-    align-items: center; /* (Optional but recommended) Vertically align items in the center */
-    padding: 1rem; /* Example padding to give some breathing room */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0; /* Remove horizontal padding from nav, body padding takes care of it */
+    margin-bottom: 2rem; /* Add some space below the nav */
+    border-bottom: 4px solid var(--nb-border-dark); /* Strong bottom border for nav */
+    background-color: transparent; /* Ensure it's transparent, body background shows through */
+}
+
+html.dark nav {
+    border-bottom-color: var(--nb-border-light);
 }
 
 .hamburger {
-  padding-right: 20px;
+  padding: 10px; /* Adjust padding for better clickable area */
   cursor: pointer;
+  border: 2px solid var(--nb-border-dark); /* Border around hamburger */
+  box-shadow: 3px 3px 0px var(--nb-border-dark); /* Small shadow */
+  background-color: var(--nb-accent-secondary); /* Accent background */
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+html.dark .hamburger {
+    border-color: var(--nb-border-light);
+    box-shadow: 3px 3px 0px var(--nb-border-light);
+}
+
+.hamburger:hover {
+    background-color: var(--nb-accent-primary); /* Hover color */
+    box-shadow: 5px 5px 0px var(--nb-border-dark); /* Larger shadow on hover */
+}
+
+html.dark .hamburger:hover {
+    box-shadow: 5px 5px 0px var(--nb-border-light);
 }
 
 .hamburger .line {
   display: block;
-  width: 40px;
-  height: 5px;
-  margin-bottom: 10px;
-  background-color: #ff9776;
+  width: 35px; /* Slightly smaller lines */
+  height: 4px; /* Thinner lines */
+  margin-bottom: 8px; /* Less margin */
+  background-color: var(--nb-border-dark); /* Dark line color */
+  transition: background-color 0.3s ease;
+}
+
+.hamburger .line:last-child {
+    margin-bottom: 0; /* Remove margin from last line */
+}
+
+html.dark .hamburger .line {
+  background-color: var(--nb-border-light); /* White line color in dark mode */
 }
 
 .nav-links {
-  width: 100%;
-  top: 5rem;
-  left: 48px;
-  background-color: #ff9776;
+  width: calc(100% + var(--nb-shadow-offset) * 2 + 8px); /* Adjust width to span full body width plus shadows/borders */
+  position: absolute; /* Position absolutely relative to body or header */
+  top: auto; /* Will be set by JS or relative positioning */
+  left: calc(-1 * var(--nb-shadow-offset) - 4px); /* Align with body border/shadow */
+  background-color: var(--nb-accent-primary); /* Bold background for mobile nav */
   display: none;
   margin: 0;
+  padding: 1rem 0;
+  border: 4px solid var(--nb-border-dark); /* Strong border for the fly-out nav */
+  border-top: none; /* No top border, connect to nav */
+  box-shadow: var(--nb-shadow-offset) var(--nb-shadow-offset) 0px var(--nb-border-dark);
+  z-index: 100; /* Ensure it's above other content */
 }
+
+html.dark .nav-links {
+    background-color: var(--nb-accent-secondary); /* Different accent in dark mode */
+    border-color: var(--nb-border-light);
+    box-shadow: var(--nb-shadow-offset) var(--nb-shadow-offset) 0px var(--nb-border-light);
+}
+
 
 .nav-links a {
   display: block;
   text-align: center;
-  padding: 10px 0;
+  padding: 15px 0; /* More padding */
   text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1.3rem; /* Slightly larger font */
+  font-weight: 900; /* Very bold */
   text-transform: uppercase;
+  color: var(--nb-text-light); /* Light text on bold background */
+  border-bottom: 1px dashed rgba(255,255,255,0.3); /* Subtle dashed separator */
+}
+
+.nav-links a:last-child {
+    border-bottom: none; /* No border on last item */
 }
 
 .nav-links a:hover,
 .nav-links a:focus {
-  background-color: #ff9776;
+  background-color: rgba(0,0,0,0.1); /* Subtle darkening on hover */
+  outline: none; /* Remove default outline, using box-shadow instead */
+  box-shadow: inset 0 0 0 2px var(--nb-border-light); /* Inset border on hover/focus */
+}
+
+html.dark .nav-links a {
+  color: var(--nb-text-dark); /* Dark text on light accent background in dark mode */
+}
+
+html.dark .nav-links a:hover,
+html.dark .nav-links a:focus {
+    background-color: rgba(255,255,255,0.1);
+    box-shadow: inset 0 0 0 2px var(--nb-border-dark);
 }
 
 .expanded {
-  display: unset;
+  display: block; /* Show the mobile menu */
 }
 
+/* Theme Icon (assuming it's a div/button containing an SVG) */
+.theme-toggle {
+    border: 2px solid var(--nb-border-dark); /* Border around the theme toggle */
+    box-shadow: 3px 3px 0px var(--nb-border-dark); /* Small shadow */
+    padding: 8px; /* Padding around the icon */
+    background-color: var(--nb-accent-secondary); /* Accent background */
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+html.dark .theme-toggle {
+    border-color: var(--nb-border-light);
+    box-shadow: 3px 3px 0px var(--nb-border-light);
+    background-color: var(--nb-accent-primary); /* Swap accent in dark mode */
+}
+
+.theme-toggle:hover {
+    background-color: var(--nb-accent-primary); /* Hover color */
+    box-shadow: 5px 5px 0px var(--nb-border-dark); /* Larger shadow on hover */
+}
+
+html.dark .theme-toggle:hover {
+    background-color: var(--nb-accent-secondary);
+    box-shadow: 5px 5px 0px var(--nb-border-light);
+}
+
+/* Adjustments for the inner ThemeIcon component if it's an SVG or similar */
+.theme-toggle svg {
+    display: block; /* Ensure SVG fills its container */
+    width: 24px; /* Set a size for the icon */
+    height: 24px;
+    fill: var(--nb-border-dark); /* Fill color for the SVG */
+}
+
+html.dark .theme-toggle svg {
+    fill: var(--nb-border-light); /* Light fill in dark mode */
+}
+
+
+/* Media Query for larger screens */
 @media screen and (min-width: 636px) {
+  nav {
+    border-bottom: none; /* Remove border on desktop nav */
+  }
+
   .nav-links {
-    margin-left: 5em;
-    display: block;
+    margin-left: 3em; /* Slightly adjust margin from hamburger if needed */
+    display: flex; /* Use flex for horizontal navigation links */
     position: static;
     width: auto;
     background: none;
+    border: none; /* Remove border from desktop nav links */
+    box-shadow: none; /* Remove shadow */
+    padding: 0; /* Remove padding */
   }
 
   .nav-links a {
     display: inline-block;
-    padding: 15px 20px;
+    padding: 10px 15px; /* Adjust padding for horizontal links */
+    border: 3px solid var(--nb-accent-primary); /* Strong border for each link */
+    box-shadow: 4px 4px 0px var(--nb-border-dark); /* Individual link shadow */
+    margin-right: 1.5rem; /* Space between links */
+    background-color: var(--nb-bg-light); /* Background for each link */
+    color: var(--nb-text-dark); /* Dark text on light background */
+    transition: all 0.2s ease;
+  }
+
+  html.dark .nav-links a {
+      border-color: var(--nb-accent-secondary);
+      box-shadow: 4px 4px 0px var(--nb-border-light);
+      background-color: var(--nb-bg-dark);
+      color: var(--nb-text-light);
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus {
+    background-color: var(--nb-accent-primary); /* Hover background */
+    color: var(--nb-text-light); /* Light text on hover */
+    transform: translate(-2px, -2px); /* Slight lift effect */
+    box-shadow: 6px 6px 0px var(--nb-border-dark); /* Larger shadow on hover */
+    outline: none; /* Handled by box-shadow */
+  }
+
+  html.dark .nav-links a:hover,
+  html.dark .nav-links a:focus {
+      background-color: var(--nb-accent-secondary);
+      color: var(--nb-text-dark); /* Dark text on hover in dark mode */
+      box-shadow: 6px 6px 0px var(--nb-border-light);
+  }
+
+  .nav-links a:last-child {
+      margin-right: 0;
+      border-bottom: none; /* Ensure no bottom border leftover from mobile */
   }
 
   .hamburger {
     display: none;
   }
+
+  /* Ensure the .site-nav container is still flex to group Navigation and Hamburger (even if hamburger is hidden) */
+  .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem; /* Space between hamburger (if visible) and nav links */
+  }
+}
+
+/* Optional: Add a simple button style for other buttons on your site */
+button {
+    background-color: var(--nb-accent-secondary);
+    color: var(--nb-text-dark);
+    padding: 0.8rem 1.5rem;
+    border: 3px solid var(--nb-border-dark);
+    box-shadow: 5px 5px 0px var(--nb-border-dark);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+html.dark button {
+    background-color: var(--nb-accent-primary);
+    color: var(--nb-text-light);
+    border-color: var(--nb-border-light);
+    box-shadow: 5px 5px 0px var(--nb-border-light);
+}
+
+button:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 8px 8px 0px var(--nb-border-dark);
+    background-color: var(--nb-accent-primary);
+    color: var(--nb-text-light);
+}
+
+html.dark button:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 8px 8px 0px var(--nb-border-light);
+    background-color: var(--nb-accent-secondary);
+    color: var(--nb-text-dark);
+}
+
+/* Basic blog post/article styling (if applicable) */
+article, section {
+    background-color: var(--nb-bg-light);
+    border: 3px solid var(--nb-border-dark);
+    box-shadow: 6px 6px 0px var(--nb-border-dark);
+    padding: 2rem;
+    margin-top: 2rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+html.dark article, html.dark section {
+    background-color: var(--nb-bg-dark);
+    border-color: var(--nb-border-light);
+    box-shadow: 6px 6px 0px var(--nb-border-light);
+}
+
+/* Example for images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border: 3px solid var(--nb-border-dark);
+    box-shadow: 6px 6px 0px var(--nb-border-dark);
+    margin: 1.5rem 0;
+}
+
+html.dark img {
+    border-color: var(--nb-border-light);
+    box-shadow: 6px 6px 0px var(--nb-border-light);
+}
+
+/* Code blocks (if you have them) */
+pre {
+    background-color: #333;
+    color: #00FF00; /* Neon green text */
+    padding: 1rem;
+    overflow-x: auto;
+    border: 3px solid var(--nb-border-dark);
+    box-shadow: 5px 5px 0px var(--nb-border-dark);
+    font-family: 'Fira Code', monospace; /* Monospaced font */
+    font-size: 0.9em;
+}
+
+html.dark pre {
+    background-color: #1A1A1A;
+    color: #00FFFF; /* Cyan text */
+    border-color: var(--nb-border-light);
+    box-shadow: 5px 5px 0px var(--nb-border-light);
+}
+
+code {
+    background-color: rgba(0,0,0,0.1);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: 'Fira Code', monospace;
+    color: inherit; /* Inherit text color from parent */
+}
+
+html.dark code {
+    background-color: rgba(255,255,255,0.1);
 }
