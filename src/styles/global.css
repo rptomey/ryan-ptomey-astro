@@ -105,26 +105,32 @@ html.dark nav {
 }
 
 .hamburger {
-  padding: 10px; /* Adjust padding for better clickable area */
-  cursor: pointer;
-  border: 2px solid var(--nb-border-dark); /* Border around hamburger */
-  box-shadow: 3px 3px 0px var(--nb-border-dark); /* Small shadow */
-  background-color: var(--nb-accent-secondary); /* Accent background */
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    padding: 10px;
+    cursor: pointer;
+    touch-action: manipulation;
+    background-color: var(--nb-accent-primary); /* Pink for light mode */
+    border: 2px solid var(--nb-border-dark);
+    box-shadow: 3px 3px 0px var(--nb-border-dark);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 html.dark .hamburger {
+    background-color: var(--nb-accent-secondary); /* Blue for dark mode */
     border-color: var(--nb-border-light);
     box-shadow: 3px 3px 0px var(--nb-border-light);
 }
 
-.hamburger:hover {
-    background-color: var(--nb-accent-primary); /* Hover color */
-    box-shadow: 5px 5px 0px var(--nb-border-dark); /* Larger shadow on hover */
+.hamburger:hover,
+.hamburger:active { /* :active for consistent touch behavior on tap */
+    transform: translate(-2px, -2px); /* Slight lift on hover/active */
+    box-shadow: 5px 5px 0px var(--nb-border-dark); /* Larger shadow */
+    background-color: var(--nb-accent-secondary); /* Blue in light mode hover/active */
 }
 
-html.dark .hamburger:hover {
+html.dark .hamburger:hover,
+html.dark .hamburger:active {
     box-shadow: 5px 5px 0px var(--nb-border-light);
+    background-color: var(--nb-accent-primary); /* Pink in dark mode hover/active */
 }
 
 .hamburger .line {
@@ -202,45 +208,6 @@ html.dark .nav-links a:focus {
 .expanded {
   display: block; /* Show the mobile menu */
 }
-
-/* Theme Icon (assuming it's a div/button containing an SVG) */
-.theme-toggle {
-    border: 2px solid var(--nb-border-dark); /* Border around the theme toggle */
-    box-shadow: 3px 3px 0px var(--nb-border-dark); /* Small shadow */
-    padding: 8px; /* Padding around the icon */
-    background-color: var(--nb-accent-secondary); /* Accent background */
-    cursor: pointer;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-html.dark .theme-toggle {
-    border-color: var(--nb-border-light);
-    box-shadow: 3px 3px 0px var(--nb-border-light);
-    background-color: var(--nb-accent-primary); /* Swap accent in dark mode */
-}
-
-.theme-toggle:hover {
-    background-color: var(--nb-accent-primary); /* Hover color */
-    box-shadow: 5px 5px 0px var(--nb-border-dark); /* Larger shadow on hover */
-}
-
-html.dark .theme-toggle:hover {
-    background-color: var(--nb-accent-secondary);
-    box-shadow: 5px 5px 0px var(--nb-border-light);
-}
-
-/* Adjustments for the inner ThemeIcon component if it's an SVG or similar */
-.theme-toggle svg {
-    display: block; /* Ensure SVG fills its container */
-    width: 24px; /* Set a size for the icon */
-    height: 24px;
-    fill: var(--nb-border-dark); /* Fill color for the SVG */
-}
-
-html.dark .theme-toggle svg {
-    fill: var(--nb-border-light); /* Light fill in dark mode */
-}
-
 
 /* Media Query for larger screens */
 @media screen and (min-width: 636px) {
