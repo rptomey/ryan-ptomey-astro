@@ -2,11 +2,11 @@
 title: 'Dynamically Routing Your Traffic'
 pubDate: 2019-03-13
 description: 'Put your data in the right place.'
-author: 'Astro Learner'
+author: 'Ryan Ptomey'
 image:
-    url: ../../src/images/blog/rails.png
+    url: '/src/images/blog/rails.png'
     alt: 'The Astro logo on a dark background with a pink glow.'
-tags: ["astro", "blogging", "learning in public"]
+tags: ["gtm", "universal analytics"]
 ---
 ![Rails](../images/blog/rails.png)
 

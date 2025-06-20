@@ -1,12 +1,26 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import { Image } from 'astro:assets';
 const { frontmatter } = Astro.props;
+let resolvedImage;
+
+// Check if image data exists in frontmatter
+if (frontmatter.image?.url) {
+    const allBlogImages = import.meta.glob('/src/images/blog/*', { eager: true });
+    resolvedImage = (allBlogImages[frontmatter.image.url] as { default: ImageMetadata })?.default;
+
+    if (!resolvedImage) {
+        console.warn(`[Image Warning] Could not find image module for path: ${frontmatter.image.url}`);
+    }
+}
 ---
 <BaseLayout pageTitle={frontmatter.title}>
     <p>{frontmatter.pubDate.toLocaleDateString()}</p>
     <p><em>{frontmatter.description}</em></p>
     <p>Written by {frontmatter.author}</p>
-    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+    {frontmatter.image && resolvedImage && (
+        <Image src={resolvedImage} alt={frontmatter.image.alt} />
+    )}
     <div class="tags">
         {frontmatter.tags.map((tag: string) => (
             <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
@@ -15,21 +29,60 @@ const { frontmatter } = Astro.props;
     <slot />
 </BaseLayout>
 <style>
-    a {
-        color: #00539F;
-    }
-
+    /* Styles for the tag container */
     .tags {
         display: flex;
         flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+        margin-bottom: 2rem;
     }
 
+    /* Styles for individual tags */
     .tag {
-        margin: 0.25em;
-        border: dotted 1px #a1a1a1;
-        border-radius: .5em;
-        padding: .5em 1em;
-        font-size: 1.15em;
-        background-color: #F8FCFD;
+        border: 3px solid var(--nb-border-dark);
+        box-shadow: 4px 4px 0px var(--nb-border-dark);
+        padding: 0.6em 1.2em;
+        font-size: 1.1em;
+        font-weight: 800;
+        text-transform: uppercase;
+        background-color: var(--nb-accent-secondary);
+        color: var(--nb-text-dark);
+        display: inline-block;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    /* Dark mode adjustments for individual tags */
+    html.dark .tag {
+        border-color: var(--nb-border-light);
+        box-shadow: 4px 4px 0px var(--nb-border-light);
+        background-color: var(--nb-accent-primary);
+        color: var(--nb-text-light);
+    }
+
+    /* Hover/Focus effects for tags */
+    .tag:hover,
+    .tag:focus-within {
+        transform: translate(-3px, -3px);
+        box-shadow: 7px 7px 0px var(--nb-border-dark);
+        background-color: var(--nb-accent-primary);
+        color: var(--nb-text-light);
+        outline: none;
+    }
+
+    html.dark .tag:hover,
+    html.dark .tag:focus-within {
+        box-shadow: 7px 7px 0px var(--nb-border-light);
+        background-color: var(--nb-accent-secondary);
+        color: var(--nb-text-dark);
+    }
+
+    /* Styling for the actual link *inside* the tag */
+    .tag a {
+        text-decoration: none;
+        color: inherit;
+        font-weight: inherit;
+        text-transform: inherit;
     }
 </style>
