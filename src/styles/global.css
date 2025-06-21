@@ -209,6 +209,67 @@ html.dark .nav-links a:focus {
   display: block; /* Show the mobile menu */
 }
 
+/* Footer styles for Neobrutalism */
+footer {
+    /* Spacing and layout */
+    margin-top: 4rem; /* Keeps good separation from main content */
+    padding: .5rem 2rem;
+    text-align: center;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.4;
+
+    /* Neobrutalism visual treatment (Light Mode Default) */
+    background-color: var(--nb-border-dark); /* Black background */
+    color: var(--nb-text-light); /* White text */
+    border: 4px solid var(--nb-border-dark); /* Strong black border */
+    /* --- SHADOW COLOR CHANGE HERE --- */
+    box-shadow: var(--nb-shadow-offset) var(--nb-shadow-offset) 0px var(--nb-border-light); /* WHITE shadow for light mode footer */
+
+    /* Smooth transitions for theme switching */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dark mode overrides for footer */
+html.dark footer {
+    background-color: var(--nb-border-light); /* White background in dark mode */
+    color: var(--nb-text-dark); /* Black text */
+    border-color: var(--nb-border-light); /* Strong white border */
+    /* --- SHADOW COLOR CHANGE HERE --- */
+    box-shadow: var(--nb-shadow-offset) var(--nb-shadow-offset) 0px var(--nb-border-dark); /* BLACK shadow for dark mode footer */
+}
+
+/* Styling for links within the footer (no changes needed here) */
+footer a {
+    color: var(--nb-accent-secondary);
+    text-decoration: underline;
+    text-decoration-color: var(--nb-accent-primary);
+    text-underline-offset: 4px;
+    font-weight: inherit;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+html.dark footer a {
+    color: var(--nb-accent-primary);
+    text-decoration-color: var(--nb-accent-secondary);
+}
+
+footer a:hover,
+footer a:focus {
+    color: var(--nb-text-light);
+    text-decoration-color: var(--nb-text-light);
+    outline: 2px dashed var(--nb-text-light);
+    outline-offset: 3px;
+}
+
+html.dark footer a:hover,
+html.dark footer a:focus {
+    color: var(--nb-text-dark);
+    text-decoration-color: var(--nb-text-dark);
+    outline: 2px dashed var(--nb-text-dark);
+}
+
 /* Media Query for larger screens */
 @media screen and (min-width: 636px) {
   nav {

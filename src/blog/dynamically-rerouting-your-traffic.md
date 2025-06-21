@@ -8,8 +8,6 @@ image:
     alt: 'The Astro logo on a dark background with a pink glow.'
 tags: ["gtm", "universal analytics"]
 ---
-![Rails](../images/blog/rails.png)
-
 Like many people, I started learning how to use Google Tag Manager (GTM) using the tutorials in Google’s Analytics Academy. Overall, they were a good start, and I highly recommend them for anyone who wants to get into GTM. You can find it, along with several other courses, [here](https://analytics.google.com/analytics/academy/). That being said, there’s a lot of nuance that doesn’t belong in content for beginners, and there’s one piece of advice that I’d like to touch on specifically.
 
 In lesson 2.2 of the Google Tag Manager Fundamentals course, they advise using a variable for your Google Analytics (GA) Property ID. That’s great advice! Occasionally, I’ll see a GTM container where someone didn’t take this suggestion to heart, opting instead to manually add their Property ID to every single GA-related tag. That’s fine if you never need to change your Property ID or if you only have a couple of tags setup in your container, but otherwise, you’re creating a headache for your future self. There’s a reason Google suggests that you use a variable for this ID: by changing the value of the variable, you can quickly change the ID for every tag that’s using the variable.
