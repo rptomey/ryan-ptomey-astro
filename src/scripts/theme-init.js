@@ -20,8 +20,7 @@
     document.documentElement.classList.remove('dark');
   }
 
-  // --- THIS IS THE CRUCIAL LINE TO RE-ADD ---
-  // Store the *determined* theme in localStorage for future visits.
+  // Store the determined theme in localStorage for future visits.
   // This happens even if it was just detected from system preferences.
   window.localStorage.setItem('theme', theme);
   // ------------------------------------------
