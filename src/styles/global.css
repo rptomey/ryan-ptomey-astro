@@ -151,10 +151,10 @@ html.dark .hamburger .line {
 }
 
 .nav-links {
-  width: calc(100% + var(--nb-shadow-offset) * 2 + 8px); /* Adjust width to span full body width plus shadows/borders */
+  width: 100%;
   position: absolute; /* Position absolutely relative to body or header */
   top: auto; /* Will be set by JS or relative positioning */
-  left: calc(-1 * var(--nb-shadow-offset) - 4px); /* Align with body border/shadow */
+  left: 0;
   background-color: var(--nb-accent-primary); /* Bold background for mobile nav */
   display: none;
   margin: 0;
@@ -180,7 +180,7 @@ html.dark .nav-links {
   font-size: 1.3rem; /* Slightly larger font */
   font-weight: 900; /* Very bold */
   text-transform: uppercase;
-  color: var(--nb-text-light); /* Light text on bold background */
+  color: var(--nb-text-dark); /* Light text on bold background */
   border-bottom: 1px dashed rgba(255,255,255,0.3); /* Subtle dashed separator */
 }
 
