@@ -184,10 +184,6 @@ html.dark .nav-links {
   border-bottom: 1px dashed rgba(255,255,255,0.3); /* Subtle dashed separator */
 }
 
-.nav-links a:last-child {
-    border-bottom: none; /* No border on last item */
-}
-
 .nav-links a:hover,
 .nav-links a:focus {
   background-color: rgba(0,0,0,0.1); /* Subtle darkening on hover */
@@ -207,6 +203,10 @@ html.dark .nav-links a:focus {
 
 .expanded {
   display: block; /* Show the mobile menu */
+}
+
+.nav-links.expanded a:last-child {
+    border-bottom: none; /* No border on last item */
 }
 
 /* Footer styles for Neobrutalism */
@@ -323,7 +323,6 @@ html.dark footer a:focus {
 
   .nav-links a:last-child {
       margin-right: 0;
-      border-bottom: none; /* Ensure no bottom border leftover from mobile */
   }
 
   .hamburger {
