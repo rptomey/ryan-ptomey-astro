@@ -11,6 +11,16 @@ const identity = {
     hobbies: ["video games", "guitar", "reading", "soccer"]
 };
 
+const today = new Date();
+const may2009 = new Date('2009-05-01T00:00:00');
+const diffMay2009 = today.getTime() - may2009.getTime();
+const yearsSinceMay2009 = (diffMay2009 / (1000 * 60 * 60 * 24 * 365.25)).toFixed(1);
+const feb2016 = new Date('2016-02-01T00:00:00');
+const diffFeb2016 = today.getTime() - feb2016.getTime();
+const yearsSinceFeb2016 = (diffFeb2016 / (1000 * 60 * 60 * 24 * 365.25)).toFixed(1);
+const july2022 = new Date('2022-07-01T00:00:00');
+const diffJuly2022 = today.getTime() - july2022.getTime();
+const yearsSinceJuly2022 = (diffJuly2022 / (1000 * 60 * 60 * 24 * 365.25)).toFixed(1);
 const skills = ["JavaScript", "Python", "Google Analytics", "BigQuery", "GCP", "Django"];
 ---
 
@@ -24,10 +34,15 @@ const skills = ["JavaScript", "Python", "Google Analytics", "BigQuery", "GCP", "
             <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
         }
     </ul>
+    <p>This is me and my kids:</p>
+    <Image src={familyPic} alt="Ryan smiling with two girls." height="400" />
+    <h2>Professional Stuff</h2>
+    <p>As mentioned, I'm currently a Data Engineer and have been for the past {yearsSinceJuly2022} years. I've worked in digital analytics for {yearsSinceFeb2016} years, and I've been in web technology for a total of {yearsSinceMay2009} years.</p>
+    <p>While my title implies that I spend most of my time building pipelines or preparing data for reports, I actually like to do lots of things. In addition to wrangling data, I build web applications, consult with clients, and mentor coworkers.</p>
     <p>My skills are:</p>
     <ul>
         {skills.map((skill) => <li>{skill}</li>)}
     </ul>
-    <p>This is me and my kids:</p>
-    <Image src={familyPic} alt="Ryan smiling with two girls." height="400" />
+    <p>You can see more about my job history on <a href="https://www.linkedin.com/in/ryanptomey/">LinkedIn</a>.</p>
+    <p>You can also download my resume <a href="/ryan-ptomey-resume.pdf">here</a>.</p>
 </BaseLayout>
