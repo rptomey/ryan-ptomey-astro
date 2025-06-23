@@ -1,7 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const pageTitle = "Ryan Ptomey";
+import { Image } from 'astro:assets';
+import homepageImage from "/src/images/general/ryan-and-chewie.png"
+const pageTitle = "Ryan Ptomey - Homepage";
+const pageHeader = "Hi, I'm Ryan!";
 ---
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} pageHeader={pageHeader}>
   <h2>Welcome to my site!</h2>
+  <Image src={homepageImage} alt="Ryan and Chewbacca" height="400" />
 </BaseLayout>

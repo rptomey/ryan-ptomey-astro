@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Ryan Ptomey - Music";
+const pageHeader = "Music";
+const artists = ["illuminati hotties", "PUP", "Modest Mouse", "The Shins", "Vampire Weeked", "Me First and the Gimme Gimmes", "Creedence Clearwater Revival", "Paul Simon"];
+const albums = [
+    {
+        title: "Guilt Show",
+        artist: "The Get Up Kids"
+    },
+    {
+        title: "The Gentle Fall",
+        artist: "Serengeti"
+    },
+    {
+        title: "Chutes Too Narrow",
+        artist: "The Shins"
+    },
+    {
+        title: "...And Out Come the Wolves",
+        artist: "Rancid"
+    },
+    {
+        title: "Let Me Do One More",
+        artist: "illuminati hotties"
+    },
+    {
+        title: "Bark Your Head Off, Dog",
+        artist: "Hop Along"
+    },
+    {
+        title: "The Moon & Antarctica",
+        artist: "Modest Mouse"
+    },
+];
+---
+<BaseLayout pageTitle={pageTitle} pageHeader={pageHeader}>
+    
+    <h2>Recommendations</h2>
+    <p>These are some artists I tend to enjoy:</p>
+    <ul>
+        {artists.map((artist) => <li>{artist}</li>)}
+    </ul>
+    <p>These are some albums I think are great:</p>
+    <ul>
+        {albums.map((album) => <li><i>{album.title}</i> - {album.artist}</li>)}
+    </ul>
+    <h2>Recent LastFM Scrobbles</h2>
+    <p>I enjoy listening to music, but as a dad, I don't always have control over what my Spotify account is playing. Here's the latest stuff I've heard:</p>
+    <a href="https://www.last.fm/user/rptomey"><img src="https://lastfm-recently-played.vercel.app/api?user=rptomey" height="auto" width="350px"/></a>
+</BaseLayout>

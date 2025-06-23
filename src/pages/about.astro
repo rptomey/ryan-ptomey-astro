@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const pageTitle = "About Me";
+import { Image } from 'astro:assets';
+import familyPic from "/src/images/general/ryan-and-girls.png"
+const pageTitle = "Ryan Ptomey - About";
+const pageHeader = "About Me";
 
 const identity = {
     firstName: "Ryan",
@@ -11,7 +14,7 @@ const identity = {
 const skills = ["JavaScript", "Python", "Google Analytics", "BigQuery", "GCP", "Django"];
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} pageHeader={pageHeader}>
     <h2>Hi, I'm Ryan.</h2>
     <p>Here are a few facts about me:</p>
     <ul>
@@ -25,4 +28,6 @@ const skills = ["JavaScript", "Python", "Google Analytics", "BigQuery", "GCP", "
     <ul>
         {skills.map((skill) => <li>{skill}</li>)}
     </ul>
+    <p>This is me and my kids:</p>
+    <Image src={familyPic} alt="Ryan smiling with two girls." height="400" />
 </BaseLayout>
