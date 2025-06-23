@@ -5,7 +5,7 @@ description: 'Put your data in the right place.'
 author: 'Ryan Ptomey'
 image:
     url: '/src/images/blog/rails.png'
-    alt: 'The Astro logo on a dark background with a pink glow.'
+    alt: 'A close-up image of parallel train tracks connected by a switch.'
 tags: ["gtm", "universal analytics"]
 ---
 Like many people, I started learning how to use Google Tag Manager (GTM) using the tutorials in Google’s Analytics Academy. Overall, they were a good start, and I highly recommend them for anyone who wants to get into GTM. You can find it, along with several other courses, [here](https://analytics.google.com/analytics/academy/). That being said, there’s a lot of nuance that doesn’t belong in content for beginners, and there’s one piece of advice that I’d like to touch on specifically.

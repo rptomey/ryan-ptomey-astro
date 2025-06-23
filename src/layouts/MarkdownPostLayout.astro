@@ -19,7 +19,7 @@ if (frontmatter.image?.url) {
     <p><em>{frontmatter.description}</em></p>
     <p>Written by {frontmatter.author}</p>
     {frontmatter.image && resolvedImage && (
-        <Image src={resolvedImage} alt={frontmatter.image.alt} />
+        <Image src={resolvedImage} alt={frontmatter.image.alt} height="350" />
     )}
     <div class="tags">
         {frontmatter.tags.map((tag: string) => (
